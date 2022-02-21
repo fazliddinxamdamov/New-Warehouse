@@ -1,20 +1,25 @@
 package com.fazliddin.newwarehouse.model;
 
+import com.fazliddin.newwarehouse.enums.Permission;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -68,14 +73,20 @@ public class User implements UserDetails {
     @LastModifiedBy
     private UUID updatedBy;
 
-    //@UpdateTimestamp
+    @UpdateTimestamp
     @LastModifiedDate
     private Timestamp updatedAt;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Permission> permissionSet = role.getPermissions();
+
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Permission permission : permissionSet) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
+        }
+        return grantedAuthorities;
     }
 
     @Override

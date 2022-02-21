@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
@@ -40,7 +41,7 @@ public abstract class AbsMain {
     @LastModifiedBy
     private UUID updatedBy;
 
-    //@UpdateTimestamp
+    @UpdateTimestamp
     @LastModifiedDate
     private Timestamp updatedAt;
 
