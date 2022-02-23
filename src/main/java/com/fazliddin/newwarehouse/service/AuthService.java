@@ -2,7 +2,7 @@ package com.fazliddin.newwarehouse.service;
 
 import com.fazliddin.newwarehouse.model.User;
 import com.fazliddin.newwarehouse.repository.UserRepo;
-import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,11 +17,14 @@ import java.util.Optional;
  * @project New-Warehouse
  */
 @Service
-@RequiredArgsConstructor
 public class AuthService implements UserDetailsService {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
+
+    @Lazy
+    public AuthService(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
 
     @Override

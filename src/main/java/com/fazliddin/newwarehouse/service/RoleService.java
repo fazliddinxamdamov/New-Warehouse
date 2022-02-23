@@ -3,8 +3,6 @@ package com.fazliddin.newwarehouse.service;
 import com.fazliddin.newwarehouse.model.Role;
 import com.fazliddin.newwarehouse.payload.ApiResponse;
 import com.fazliddin.newwarehouse.repository.RoleRepo;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,10 +11,13 @@ import org.springframework.stereotype.Service;
  * @project New-Warehouse
  */
 @Service
-@RequiredArgsConstructor
 public class RoleService {
 
    private final RoleRepo roleRepo;
+
+    public RoleService(RoleRepo roleRepo) {
+        this.roleRepo = roleRepo;
+    }
 
     public ApiResponse add(Role role) {
         Role newRole = new Role();

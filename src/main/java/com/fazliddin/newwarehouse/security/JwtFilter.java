@@ -1,7 +1,6 @@
-package com.fazliddin.security;
+package com.fazliddin.newwarehouse.security;
 
 import com.fazliddin.newwarehouse.service.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,13 +18,17 @@ import java.io.IOException;
  * @date 18.02.2022  17:30
  * @project New-Warehouse
  */
-@Component
-@RequiredArgsConstructor
-public class JwtFilter extends OncePerRequestFilter {
 
+@Component
+public class JwtFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
     private final AuthService myAuthService;
+
+    public JwtFilter(JwtProvider jwtProvider, AuthService myAuthService) {
+        this.jwtProvider = jwtProvider;
+        this.myAuthService = myAuthService;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

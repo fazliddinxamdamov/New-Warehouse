@@ -1,4 +1,4 @@
-package com.fazliddin.security;
+package com.fazliddin.newwarehouse.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
