@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
+export const baseURL = "http://localhost/api/"
 ReactDOM.render(
   <React.StrictMode>
     <App />

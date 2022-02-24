@@ -1,10 +1,7 @@
 package com.fazliddin.newwarehouse.model;
 
 import com.fazliddin.newwarehouse.enums.Permission;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
@@ -31,8 +28,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @EntityListeners(value = AuditingEntityListener.class)
 public class User implements UserDetails {
 
