@@ -1,5 +1,6 @@
 package com.fazliddin.newwarehouse.repository;
 
+import com.fazliddin.newwarehouse.enums.RoleTypeEnum;
 import com.fazliddin.newwarehouse.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,5 @@ public interface RoleRepo extends JpaRepository<Role , UUID> {
 
     Boolean existsByName(String name);
 
+    Role findByRoleType(RoleTypeEnum user);
 }
