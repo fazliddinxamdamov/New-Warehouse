@@ -17,6 +17,5 @@ import java.util.UUID;
 public interface RoleRepo extends JpaRepository<Role , UUID> {
 
     Boolean existsByName(String name);
-
     Role findByRoleType(RoleTypeEnum user);
 }

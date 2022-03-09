@@ -11,6 +11,7 @@ import java.util.UUID;
  * @date 24.02.2022  11:13
  * @project New-Warehouse
  */
+
 public interface VerificationCodeRepo extends JpaRepository<VerificationCode , UUID> {
     VerificationCode checkVerificationCode(String phoneNumber, String verificationCode, Timestamp timestamp);
 }

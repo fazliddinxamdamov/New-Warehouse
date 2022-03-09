@@ -1,14 +1,9 @@
 package com.fazliddin.newwarehouse.controller;
 
-import com.fazliddin.newwarehouse.model.Role;
-import com.fazliddin.newwarehouse.payload.ApiResponse;
 import com.fazliddin.newwarehouse.service.RoleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.text.ParseException;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Fazliddin Xamdamov
@@ -19,11 +14,5 @@ import java.text.ParseException;
 @RequiredArgsConstructor
 @RequestMapping("/api/login")
 public class LoginController {
-
    private final RoleService roleService;
-
-
-
-
-
 }
